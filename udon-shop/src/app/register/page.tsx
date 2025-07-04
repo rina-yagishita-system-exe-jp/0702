@@ -83,9 +83,9 @@ export default function RegisterPage() {
       } else {
         setError('アカウントの作成に失敗しました。')
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Registration error:', error)
-      if (error.message === 'ユーザーは既に存在します') {
+      if (error instanceof Error && error.message === 'ユーザーは既に存在します') {
         setError('このメールアドレスは既に使用されています。')
       } else {
         setError('アカウントの作成に失敗しました。もう一度お試しください。')

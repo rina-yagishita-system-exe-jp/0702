@@ -6,7 +6,7 @@ import { SessionManager } from '@/lib/auth-indexeddb'
 import { CartManager } from '@/lib/cart'
 
 export default function Header() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<{id: string; email: string; name: string} | null>(null)
   const [cartItemCount, setCartItemCount] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 

@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import { dbManager, User } from './indexeddb'
+import { dbManager } from './indexeddb'
 
 export interface AuthUser {
   id: string;
