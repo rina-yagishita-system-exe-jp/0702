@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 創作うどん屋 - オンラインショップ
 
-## Getting Started
+Next.js 15で構築された創作うどんのオンラインショップです。
 
-First, run the development server:
+## 機能
+
+- 商品一覧・詳細表示
+- ショッピングカート機能
+- ユーザー認証（開発環境）
+- 管理者機能（開発環境）
+- レスポンシブデザイン
+
+## GitHub Pagesへのデプロイ
+
+このプロジェクトはGitHub Pagesに自動デプロイされるように設定されています。
+
+### 設定手順
+
+1. GitHubリポジトリの設定で「Pages」セクションに移動
+2. Source を「GitHub Actions」に設定
+3. `main`ブランチにプッシュすると自動的にデプロイされます
+
+### ローカル開発
 
 ```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバーの起動
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 本番ビルド（静的エクスポート）
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 技術スタック
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **フレームワーク**: Next.js 15
+- **スタイリング**: Tailwind CSS
+- **データベース**: Prisma + SQLite（開発環境）
+- **認証**: NextAuth.js（開発環境）
+- **デプロイ**: GitHub Pages + GitHub Actions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 注意事項
 
-## Learn More
+- GitHub Pagesでは静的サイトとして動作するため、データベース機能は無効化されています
+- 本番環境ではモックデータを使用しています
+- 認証機能は開発環境でのみ利用可能です
 
-To learn more about Next.js, take a look at the following resources:
+## ライセンス
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License

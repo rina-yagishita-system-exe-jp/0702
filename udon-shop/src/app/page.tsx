@@ -1,32 +1,10 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-import { dbManager, Product } from '@/lib/indexeddb'
+import { getProducts } from '@/lib/data-provider'
 import ProductCard from '@/components/ProductCard'
 
-export default function Home() {
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const initializeData = async () => {
-      try {
-        await dbManager.init()
-        await dbManager.initSampleData()
-        
-        const products = await dbManager.getAllProducts()
-        setFeaturedProducts(products.slice(0, 4)) // Show first 4 products as featured
-      } catch (error) {
-        console.error('Error initializing data:', error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    initializeData()
-  }, [])
+export default async function Home() {
+  const allProducts = await getProducts()
+  const featuredProducts = allProducts.slice(0, 4) // Show first 4 products as featured
 
   return (
     <div className="min-h-screen">
@@ -127,19 +105,11 @@ export default function Home() {
             </p>
           </div>
 
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[...Array(4)].map((_, index) => (
-                <div key={index} className="bg-gray-200 rounded-lg h-80 animate-pulse"></div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {featuredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
           <div className="text-center mt-8">
             <Link

@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Product } from '@/lib/indexeddb'
+import { Product } from '@/types/product'
 import { CartManager } from '@/lib/cart'
 
 interface ProductCardProps {

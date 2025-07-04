@@ -1,4 +1,4 @@
-import { Product } from './indexeddb'
+import { Product } from '@/types/product'
 
 export interface CartItem {
   product: Product;
