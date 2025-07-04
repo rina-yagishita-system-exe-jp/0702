@@ -3,13 +3,14 @@ import { getProduct } from '@/lib/data-provider'
 import ProductDetailClient from './ProductDetailClient'
 
 interface ProductDetailPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const product = await getProduct(params.id)
+  const { id } = await params
+  const product = await getProduct(id)
 
   if (!product) {
     notFound()
